@@ -1,30 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | My Rocketry Club</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <title>{{ page.title }} | {{ site.title | default: site.github.repository_name }}</title>
+  <!-- Include the Cayman theme's stylesheet -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <!-- Include the model-viewer script -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
-  <!-- Optional: Add a stylesheet for styling -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav>
-    <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; background-color: #f0f0f0;">
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/about' | relative_url }}">About Us</a></li>
-      <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
-      <li><a href="{{ '/roster' | relative_url }}">Roster</a></li>
-      <li><a href="{{ '/contact' | relative_url }}">Contact Us</a></li>
+  <nav class="main-header" style="background-color: #f0f0f0; padding: 10px;">
+    <ul style="list-style: none; display: flex; justify-content: space-around; margin: 0; padding: 0;">
+      <li><a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #159957;">Home</a></li>
+      <li><a href="{{ '/about' | relative_url }}" style="text-decoration: none; color: #159957;">About Us</a></li>
+      <li><a href="{{ '/projects' | relative_url }}" style="text-decoration: none; color: #159957;">Projects</a></li>
+      <li><a href="{{ '/roster' | relative_url }}" style="text-decoration: none; color: #159957;">Roster</a></li>
+      <li><a href="{{ '/contact' | relative_url }}" style="text-decoration: none; color: #159957;">Contact Us</a></li>
     </ul>
   </nav>
 
-  <!-- Page content -->
-  <main>
+  <!-- Cayman theme's main content area -->
+  <section class="page-header">
+    <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
+    <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+  </section>
+
+  <section class="main-content">
     {{ content }}
-  </main>
+    <footer class="site-footer">
+      <span class="site-footer-owner">{{ site.github.owner_name }} &copy; {{ 'now' | date: '%Y' }}. All rights reserved.</span>
+    </footer>
+  </section>
 </body>
 </html>
