@@ -4,24 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#157878">
-  <meta name="description" content="APEX at ASU is a rocketry club at Arizona State University focused on designing and building turbopumps and rocket engines.">
+  <meta name="description" content="APEX at ASU is a student organization at Arizona State University dedicated to advancing turbopump technology and rocketry.">
   <title>{{ page.title }} | APEX at ASU</title>
-  <!-- Include the Cayman theme's stylesheet -->
+  <!-- Cayman theme stylesheet -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <!-- Optional: Analytics inspired by PURPL (replace with your own ID if desired) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  <!-- Include the model-viewer script (kept from your original) -->
+  <!-- Google Fonts (inspired by SDR) -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
+  <!-- Optional: Simple inline CSS for parallax-like effect -->
+  <style>
+    body {
+      background-image: url('https://media.giphy.com/media/3o7TKz2b3eB22b4YbK/giphy.gif');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+  <!-- Model-viewer scripts (kept from your original) -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 <body>
-  <!-- Navigation Bar (unchanged from your original) -->
+  <!-- Navigation Bar (unchanged) -->
   <nav class="main-header" style="background-color: #f0f0f0; padding: 10px;">
     <ul style="list-style: none; display: flex; justify-content: space-around; margin: 0; padding: 0;">
       <li><a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #159957;">Home</a></li>
@@ -32,10 +37,10 @@
     </ul>
   </nav>
 
-  <!-- Cayman theme's main content area -->
+  <!-- Cayman theme content area -->
   <section class="page-header">
     <h1 class="project-name">APEX at ASU</h1>
-    <h2 class="project-tagline">Pushing the boundaries of rocketry and turbopump technology</h2>
+    <h2 class="project-tagline">Innovating Turbopumps and Rocketry</h2>
   </section>
 
   <section class="main-content">
