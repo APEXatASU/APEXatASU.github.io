@@ -12,8 +12,29 @@ include_head: true
   style="width: 80%; height: 500px;">
 </model-viewer>
 
-APEX at ASU is working on multiple exciting projects, including:
-- **Turbopump** – High-performance fuel delivery system
-- **Engine** – Custom-designed propulsion system
-- **Thrust Structure** – Structural support for engine testing
-- **Controls System** – Advanced electronic control mechanisms
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <div style="text-align: center;">
+    <a href="/turbopump">
+      <img src="https://via.placeholder.com/150" alt="Turbopump" />
+      <p>Turbopump</p>
+    </a>
+  </div>
+  <div style="text-align: center;">
+    <a href="/engine">
+      <img src="https://via.placeholder.com/150" alt="Engine" />
+      <p>Engine</p>
+    </a>
+  </div>
+  <div style="text-align: center;">
+    <a href="/thrust-structure">
+      <img src="https://via.placeholder.com/150" alt="Thrust Structure" />
+      <p>Thrust Structure</p>
+    </a>
+  </div>
+  <div style="text-align: center;">
+    <a href="/controls-system">
+      <img src="https://via.placeholder.com/150" alt="Controls System" />
+      <p>Controls System</p>
+    </a>
+  </div>
+</div>
