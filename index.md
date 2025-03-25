@@ -1,6 +1,7 @@
 ---
 title: Home
 layout: default
+include_head: true
 ---
 # Welcome to APEX at ASU
 Advancing propulsion and exploration through innovative research and engineering at Arizona State University.
