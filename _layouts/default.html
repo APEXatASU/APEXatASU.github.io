@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | APEX at ASU</title>
-  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
+  <title>{{ page.title }} | My Rocketry Club</title>
+  <!-- Include the model-viewer script -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+  <!-- Optional: Add a stylesheet for styling -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
   <!-- Navigation Bar -->
   <nav>
-    <ul>
+    <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; background-color: #f0f0f0;">
       <li><a href="{{ '/' | relative_url }}">Home</a></li>
       <li><a href="{{ '/about' | relative_url }}">About Us</a></li>
       <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
