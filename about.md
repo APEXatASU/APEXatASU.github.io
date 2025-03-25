@@ -1,6 +1,6 @@
 ---
-title: About Us
+title: Home
 layout: default
 ---
-# About APEX at ASU
-APEX is dedicated to advancing propulsion and exploration through cutting-edge research and engineering.
+# Welcome to APEX at ASU
+Advancing propulsion and exploration through innovative research and engineering at Arizona State University.
