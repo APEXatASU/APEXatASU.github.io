@@ -1,5 +1,5 @@
 ---
-title: Home
+title: About
 layout: default
 ---
 # Welcome to APEX at ASU
