@@ -5,35 +5,29 @@ include_head: true
 ---
 
 # Our Projects
-<model-viewer 
-  src="https://apexatasu.github.io/ImageToStl.com_expCase+REV+3B+v10.glb" 
-  alt="3D Model" 
-  camera-controls 
-  style="width: 80%; height: 500px;">
-</model-viewer>
 
-<div style="display: flex; justify-content: center; gap: 20px;">
+<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
   <div style="text-align: center;">
     <a href="/turbopump">
-      <img src="https://via.placeholder.com/150" alt="Turbopump" />
+      <img src="https://media.giphy.com/media/3o7TKz2b3wyk65bD8k/giphy.gif" alt="Turbopump" style="width: 200px; height: 200px;">
       <p>Turbopump</p>
     </a>
   </div>
   <div style="text-align: center;">
     <a href="/engine">
-      <img src="https://via.placeholder.com/150" alt="Engine" />
+      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Engine" style="width: 200px; height: 200px;">
       <p>Engine</p>
     </a>
   </div>
   <div style="text-align: center;">
     <a href="/thrust-structure">
-      <img src="https://via.placeholder.com/150" alt="Thrust Structure" />
+      <img src="https://media.giphy.com/media/xT9IgzoW5pxlNQI8M/giphy.gif" alt="Thrust Structure" style="width: 200px; height: 200px;">
       <p>Thrust Structure</p>
     </a>
   </div>
   <div style="text-align: center;">
     <a href="/controls-system">
-      <img src="https://via.placeholder.com/150" alt="Controls System" />
+      <model-viewer src="https://apexatasu.github.io/ImageToStl.com_expCase+REV+3B+v10.glb" alt="Controls System" style="width: 200px; height: 200px;" camera-controls></model-viewer>
       <p>Controls System</p>
     </a>
   </div>
