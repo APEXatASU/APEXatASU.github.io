@@ -4,15 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#157878">
-  <title>{{ page.title }} | {{ site.title | default: site.github.repository_name }}</title>
+  <meta name="description" content="APEX at ASU is a rocketry club at Arizona State University focused on designing and building turbopumps and rocket engines.">
+  <title>{{ page.title }} | APEX at ASU</title>
   <!-- Include the Cayman theme's stylesheet -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <!-- Include the model-viewer script -->
+  <!-- Optional: Analytics inspired by PURPL (replace with your own ID if desired) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <!-- Include the model-viewer script (kept from your original) -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <!-- Navigation Bar (unchanged from your original) -->
   <nav class="main-header" style="background-color: #f0f0f0; padding: 10px;">
     <ul style="list-style: none; display: flex; justify-content: space-around; margin: 0; padding: 0;">
       <li><a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #159957;">Home</a></li>
@@ -25,14 +34,14 @@
 
   <!-- Cayman theme's main content area -->
   <section class="page-header">
-    <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
-    <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+    <h1 class="project-name">APEX at ASU</h1>
+    <h2 class="project-tagline">Pushing the boundaries of rocketry and turbopump technology</h2>
   </section>
 
   <section class="main-content">
     {{ content }}
     <footer class="site-footer">
-      <span class="site-footer-owner">{{ site.github.owner_name }} &copy; {{ 'now' | date: '%Y' }}. All rights reserved.</span>
+      <span class="site-footer-owner">APEX at ASU © {{ 'now' | date: '%Y' }}. All rights reserved.</span>
     </footer>
   </section>
 </body>
