@@ -3,8 +3,10 @@ title: Home
 layout: default
 include_head: true
 ---
-# Welcome to APEX at ASU
-Advancing propulsion and exploration through innovative research and engineering at Arizona State University.
+
+# Welcome to Our Rocketry Club
+
+We’re passionate about rocketry and innovation. Explore our projects, meet the team, and get in touch!
 
 ## Navigation
 - [About Us](about)
