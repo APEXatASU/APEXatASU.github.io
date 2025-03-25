@@ -2,11 +2,11 @@
 Organization Website
 
 ---
-title: APEX at ASU
-description: Advancing propulsion and exploration at ASU
-remote_theme: pages-themes/cayman@v0.2.0
-plugins:
-  - jekyll-remote-theme
+title: Cayman theme
+description: Cayman is a clean, responsive theme for GitHub Pages.
+show_downloads: true
+google_analytics:
+theme: jekyll-theme-cayman
 ---
 
 <nav>
