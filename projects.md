@@ -4,31 +4,15 @@ layout: default
 include_head: true
 ---
 
-# Our Projects
+# Projects
 
-<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
-  <div style="text-align: center;">
-    <a href="/turbopump" style="text-decoration: none; color: #159957;">
-      <img src="https://media.giphy.com/media/3o7TKz2b3wyk65bD8k/giphy.gif" alt="Turbopump" style="width: 200px; height: 200px; border-radius: 10px;">
-      <p>Turbopump</p>
-    </a>
-  </div>
-  <div style="text-align: center;">
-    <a href="/engine" style="text-decoration: none; color: #159957;">
-      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Engine" style="width: 200px; height: 200px; border-radius: 10px;">
-      <p>Engine</p>
-    </a>
-  </div>
-  <div style="text-align: center;">
-    <a href="/thrust-structure" style="text-decoration: none; color: #159957;">
-      <img src="https://media.giphy.com/media/xT9IgzoW5pxlNQI8M/giphy.gif" alt="Thrust Structure" style="width: 200px; height: 200px; border-radius: 10px;">
-      <p>Thrust Structure</p>
-    </a>
-  </div>
-  <div style="text-align: center;">
-    <a href="/controls-system" style="text-decoration: none; color: #159957;">
-      <model-viewer src="https://apexatasu.github.io/ImageToStl.com_expCase+REV+3B+v10.glb" alt="Controls System" style="width: 200px; height: 200px; border-radius: 10px;" camera-controls></model-viewer>
-      <p>Controls System</p>
-    </a>
-  </div>
-</div>
+## Overview
+APEX is pushing the boundaries of rocketry with hands-on projects in turbopump design, testing, and outreach.
+
+## Our Projects
+- **Turbopump Project**: Designing a high-efficiency turbopump for a kerosene/LOX rocket engine. [Learn More](/projects/turbopump/)  
+- **Engine**: Integrating our turbopump with a liquid rocket engine. [Learn More](/projects/engine/)  
+- **Thrust Structure**: Building a robust structure to support engine testing. [Learn More](/projects/thrust-structure/)  
+- **Control Systems**: Developing systems to monitor and control turbopump performance. [Learn More](/projects/controls-system/)  
+- **Test Stand**: A platform to validate turbopump performance under operational conditions. [Learn More](/projects/test-stand/)  
+- **Outreach**: Inspiring K-12 students through rocketry workshops. [Learn More](/projects/outreach/)
