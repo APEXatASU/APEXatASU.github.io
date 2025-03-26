@@ -19,8 +19,8 @@ We build all kinds of turbomachinery projects—from turbopumps to turbojet engi
 
 ## News
 Stay up to date with our latest developments.  
-- **10/2024 – Turbopump Design Complete**: Finalized CAD design for our kerosene/LOX turbopump. [See Details](/news/2024-10-turbopump-design-complete)  
-- **9/2024 – Fall Rocketry Workshop**: Hosted a workshop for high school students. [See Details](/news/2024-09-fall-rocketry-workshop)  
+- **02/2025 – ANSYS Workshop with SDR Leadership**: We met with SDR leadership to cover how we can utilize ANSYS to aid pump design. [See Details](/news/2025-02-ansys-workshop)  
+- **01/2025 – Turbopump Design Started**: Our team began development of the CAD design for our kerosene/LOX turbopump. [See Details](/news/2025-01-turbopump-design-started)  
 [View All News](/news)
 
 ## Join Us
