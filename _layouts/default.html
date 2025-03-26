@@ -9,15 +9,15 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <!-- Add Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <!-- Add model-viewer script (already present) -->
+  <!-- Add model-viewer script -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <!-- Custom CSS for Hero Section -->
   <style>
     /* Navigation Bar Styling */
     .main-header {
-      background-color: #1a1a1a; /* Dark background like Rocket Lab */
+      background-color: #1a1a1a;
       padding: 15px;
-      position: fixed; /* Fix the navbar at the top */
+      position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
@@ -34,7 +34,7 @@
     }
     .main-header ul li a {
       text-decoration: none;
-      color: #ffffff; /* White text */
+      color: #ffffff;
       font-family: 'Arial', sans-serif;
       font-weight: 500;
       text-transform: uppercase;
@@ -47,7 +47,7 @@
     /* Hero Section Styling */
     .hero-section {
       position: relative;
-      height: 100vh; /* Full viewport height */
+      height: 100vh;
       overflow: hidden;
     }
     .swiper-container {
@@ -57,7 +57,7 @@
     .swiper-slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Ensure GIFs cover the slide */
+      object-fit: cover;
     }
     .hero-text {
       position: absolute;
@@ -65,23 +65,23 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: #ffffff;
-      font-family: 'Montserrat', sans-serif; /* Modern sans-serif font */
-      font-size: 4rem; /* Large text like Rocket Lab */
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem;
       font-weight: 700;
       text-transform: uppercase;
       text-align: center;
       line-height: 1.2;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Shadow for contrast */
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     }
     @media (max-width: 768px) {
       .hero-text {
-        font-size: 2rem; /* Smaller text on mobile */
+        font-size: 2rem;
       }
     }
 
     /* Main Content Adjustment */
     .main-content {
-      margin-top: 60px; /* Add margin to account for fixed navbar */
+      margin-top: 60px;
     }
   </style>
 </head>
@@ -115,17 +115,17 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- Initialize Swiper -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    window.onload = function () {
       const swiper = new Swiper('.swiper-container', {
-        loop: true, // Loop through slides
+        loop: true,
         autoplay: {
-          delay: 5000, // 5 seconds per slide
+          delay: 5000,
           disableOnInteraction: false,
         },
-        effect: 'fade', // Fade transition like Rocket Lab
-        speed: 1000, // Smooth transition
+        effect: 'fade',
+        speed: 1000,
       });
-    });
+    };
   </script>
 </body>
 </html>
