@@ -1,3 +1,100 @@
+---
+title: Home
+layout: default
+---
+
+<div class="hero-section">
+  <div class="slideshow">
+    <div class="slide">
+      <img src="/assets/images/hero-slideshow/castle.jpg" alt="Castle">
+    </div>
+    <div class="slide">
+      <img src="/assets/images/hero-slideshow/mars.png" alt="Mars">
+    </div>
+    <div class="slide">
+      <img src="/assets/images/hero-slideshow/winter.jpg" alt="Winter">
+    </div>
+  </div>
+  <div class="hero-text">
+    THE CLUB TO END ALL CLUBS
+  </div>
+  <button class="prev-btn">❮</button>
+  <button class="next-btn">❯</button>
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSetCSo3qPH0vZY5SkkZkFrHTlZe1MrBMkFabVqSG0ugdA98mA/viewform?usp=sharing" class="join-btn">Join Our Club</a>
+</div>
+
+<section class="rocket-assembly">
+  <h2>Our Rocket Assembly</h2>
+  <div id="rocket-canvas" style="width: 100%; height: 100vh;"></div>
+  <div class="rocket-component" data-component="nose">
+    <h3>Nose Cone</h3>
+    <p>The nose cone reduces aerodynamic drag during flight.</p>
+  </div>
+  <div class="rocket-component" data-component="body">
+    <h3>Body Tube</h3>
+    <p>The body tube houses the turbopump and fuel systems.</p>
+  </div>
+  <div class="rocket-component" data-component="fins">
+    <h3>Fins</h3>
+    <p>Fins provide stability during ascent.</p>
+  </div>
+</section>
+
+<section>
+  <h2>About Us</h2>
+  <p>APEX at ASU is a student-led club at Arizona State University designing turbopumps for liquid rocket engines, preparing members for aerospace careers.  
+  <a href="/about">Learn More</a></p>
+</section>
+
+<section>
+  <h2>What We Do</h2>
+  <p>We build all kinds of turbomachinery projects—from turbopumps to turbojet engines and more. Find out how you can be a part of our mission below.  
+  <a href="/projects">See Projects</a></p>
+</section>
+
+<section>
+  <h2>News</h2>
+  <p>Stay up to date with our latest developments.</p>
+  <ul>
+    <li><strong>02/2025 – ANSYS Workshop with SDR Leadership</strong>: We met with SDR leadership to cover how we can utilize ANSYS to aid pump design. <a href="/news/2025-02-ansys-workshop">See Details</a></li>
+    <li><strong>01/2025 – Turbopump Design Started</strong>: Our team began development of the CAD design for our kerosene/LOX turbopump. <a href="/news/2025-01-turbopump-design-started">See Details</a></li>
+  </ul>
+  <p><a href="/news">View All News</a></p>
+</section>
+
+<section>
+  <h2>Join Us</h2>
+  <p>Interested in joining APEX? Fill out our interest form!  
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSetCSo3qPH0vZY5SkkZkFrHTlZe1MrBMkFabVqSG0ugdA98mA/viewform?usp=sharing">Sign Up Now</a></p>
+</section>
+Changes Made:
+
+Slideshow Structure:
+Removed the active class from the first slide (we’ll add it dynamically with JavaScript).
+Kept the three images with their correct paths.
+Overlay Text: Kept the hero-text div as-is.
+Navigation Buttons: Kept the prev-btn and next-btn buttons.
+Dots: Added a dots div with three dot spans to indicate the number of slides and the current slide.
+Join Button: Added a join-btn link to your Google Form, styled to appear in the bottom-right corner like Sun Devil Rocketry’s.
+Step 2: Update _layouts/default.html
+We’ll fix the CSS to ensure only one slide is visible at a time, position the navigation buttons correctly, and add styles for the dots and join button. We’ll also update the JavaScript to handle the slideshow, dots, and button interactions.
+
+Updated _layouts/default.html:
+
+html
+
+Preview
+
+Collapse
+
+Wrap
+
+Copy
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -115,4 +212,250 @@
       right: 20px;
     }
     .prev-btn:hover, .next-btn:hover {
-      background: rgb
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+    .dot.active {
+      opacity: 1;
+    }
+    .join-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: #ff0000;
+      color: #ffffff;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-family: 'Arial', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      border-radius: 5px;
+      z-index: 10;
+    }
+    .join-btn:hover {
+      background: #cc0000;
+    }
+
+    /* Main Content Adjustment */
+    .main-content {
+      margin-top: 60px;
+    }
+
+    /* Rocket Assembly Styling */
+    .rocket-assembly {
+      position: relative;
+      text-align: center;
+      padding: 50px 0;
+    }
+    .rocket-component {
+      margin: 100px 0;
+      padding: 20px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #rocket-canvas {
+      background: #1a1a1a;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="main-header">
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/about' | relative_url }}">About</a></li>
+      <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
+      <li><a href="{{ '/roster' | relative_url }}">Roster</a></li>
+      <li><a href="{{ '/news' | relative_url }}">News</a></li>
+      <li><a href="{{ '/contact' | relative_url }}">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="page-header">
+    <h1 class="project-name">APEX at ASU</h1>
+    <h2 class="project-tagline">Innovating Turbopumps & Rocketry</h2>
+  </section>
+
+  <section class="main-content">
+    {{ content }}
+    <footer class="site-footer">
+      <span class="site-footer-owner">APEX at ASU © {{ 'now' | date: '%Y' }}. All rights reserved.</span>
+    </footer>
+  </section>
+
+  <!-- Slideshow Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      const totalSlides = slides.length;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.remove('active');
+          dots[i].classList.remove('active');
+          if (i === index) {
+            slide.classList.add('active');
+            dots[i].classList.add('active');
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      // Auto-slide every 5 seconds
+      let autoSlide = setInterval(nextSlide, 5000);
+
+      // Navigation buttons
+      document.querySelector('.next-btn').addEventListener('click', () => {
+        clearInterval(autoSlide);
+        nextSlide();
+        autoSlide = setInterval(nextSlide, 5000);
+      });
+
+      document.querySelector('.prev-btn').addEventListener('click', () => {
+        clearInterval(autoSlide);
+        prevSlide();
+        autoSlide = setInterval(nextSlide, 5000);
+      });
+
+      // Dot navigation
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          clearInterval(autoSlide);
+          currentSlide = index;
+          showSlide(currentSlide);
+          autoSlide = setInterval(nextSlide, 5000);
+        });
+      });
+
+      // Initial slide
+      showSlide(currentSlide);
+    });
+  </script>
+
+  <!-- Rocket Assembly Script -->
+  <script>
+    // Initialize Three.js Scene
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('rocket-canvas').appendChild(renderer.domElement);
+
+    // Add Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(0, 1, 1);
+    scene.add(directionalLight);
+
+    // Placeholder Rocket Components
+    const noseGeometry = new THREE.ConeGeometry(1, 2, 32);
+    const bodyGeometry = new THREE.CylinderGeometry(1, 1, 4, 32);
+    const finsGeometry = new THREE.BoxGeometry(0.5, 0.1, 2);
+    const material = new THREE.MeshStandardMaterial({ color: 0x888888 });
+
+    const nose = new THREE.Mesh(noseGeometry, material);
+    const body = new THREE.Mesh(bodyGeometry, material);
+    const fin1 = new THREE.Mesh(finsGeometry, material);
+    const fin2 = new THREE.Mesh(finsGeometry, material);
+
+    nose.position.y = 3;
+    body.position.y = 0;
+    fin1.position.set(1.2, -2, 0);
+    fin2.position.set(-1.2, -2, 0);
+    fin2.rotation.z = Math.PI;
+
+    scene.add(nose);
+    scene.add(body);
+    scene.add(fin1);
+    scene.add(fin2);
+
+    camera.position.z = 5;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(nose.position, {
+      y: 5,
+      scrollTrigger: {
+        trigger: '.rocket-component[data-component="nose"]',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: true,
+      },
+    });
+
+    gsap.to(body.position, {
+      y: 2,
+      scrollTrigger: {
+        trigger: '.rocket-component[data-component="body"]',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: true,
+      },
+    });
+
+    gsap.to(fin1.position, {
+      x: 2.5,
+      scrollTrigger: {
+        trigger: '.rocket-component[data-component="fins"]',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: true,
+      },
+    });
+
+    gsap.to(fin2.position, {
+      x: -2.5,
+      scrollTrigger: {
+        trigger: '.rocket-component[data-component="fins"]',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: true,
+      },
+    });
+  </script>
+</body>
+</html>
