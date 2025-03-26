@@ -7,11 +7,14 @@
   <meta name="description" content="APEX at ASU: Innovating turbopumps and rocketry at Arizona State University.">
   <title>{{ page.title }} | APEX at ASU</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <!-- Add Swiper CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <!-- Add model-viewer script -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <!-- Custom CSS for Hero Section -->
+  <!-- Add Three.js -->
+  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+  <!-- Add GSAP and ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+  <!-- Custom CSS -->
   <style>
     /* Navigation Bar Styling */
     .main-header {
@@ -50,11 +53,25 @@
       height: 100vh;
       overflow: hidden;
     }
-    .swiper-container {
+    .slideshow {
       width: 100%;
       height: 100%;
     }
-    .swiper-slide img {
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide.active {
+      display: block;
+      opacity: 1;
+    }
+    .slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -72,16 +89,58 @@
       text-align: center;
       line-height: 1.2;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      z-index: 10;
     }
     @media (max-width: 768px) {
       .hero-text {
         font-size: 2rem;
       }
     }
+    .prev-btn, .next-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #ffffff;
+      border: none;
+      padding: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.3s;
+    }
+    .prev-btn {
+      left: 20px;
+    }
+    .next-btn {
+      right: 20px;
+    }
+    .prev-btn:hover, .next-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
 
     /* Main Content Adjustment */
     .main-content {
       margin-top: 60px;
+    }
+
+    /* Rocket Assembly Styling */
+    .rocket-assembly {
+      position: relative;
+      text-align: center;
+      padding: 50px 0;
+    }
+    .rocket-component {
+      margin: 100px 0;
+      padding: 20px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #rocket-canvas {
+      background: #1a1a1a;
     }
   </style>
 </head>
@@ -111,21 +170,144 @@
     </footer>
   </section>
 
-  <!-- Add Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <!-- Initialize Swiper -->
+  <!-- Slideshow Script -->
   <script>
-    window.onload = function () {
-      const swiper = new Swiper('.swiper-container', {
-        loop: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        effect: 'fade',
-        speed: 1000,
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
       });
-    };
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    // Auto-slide every 5 seconds
+    let autoSlide = setInterval(nextSlide, 5000);
+
+    // Navigation buttons
+    document.querySelector('.next-btn').addEventListener('click', () => {
+      clearInterval(autoSlide);
+      nextSlide();
+      autoSlide = setInterval(nextSlide, 5000);
+    });
+
+    document.querySelector('.prev-btn').addEventListener('click', () => {
+      clearInterval(autoSlide);
+      prevSlide();
+      autoSlide = setInterval(nextSlide, 5000);
+    });
+
+    // Initial slide
+    showSlide(currentSlide);
+  </script>
+
+  <!-- Rocket Assembly Script -->
+  <script>
+    // Initialize Three.js Scene
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('rocket-canvas').appendChild(renderer.domElement);
+
+    // Add Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(0, 1, 1);
+    scene.add(directionalLight);
+
+    // Placeholder Rocket Components
+    const noseGeometry = new THREE.ConeGeometry(1, 2, 32);
+    const bodyGeometry = new THREE.CylinderGeometry(1, 1, 4, 32);
+    const finsGeometry = new THREE.BoxGeometry(0.5, 0.1, 2);
+    const material = new THREE.MeshStandardMaterial({ color: 0x888888 });
+
+    const nose = new THREE.Mesh(noseGeometry, material);
+    const body = new THREE.Mesh(bodyGeometry, material);
+    const fin1 = new THREE.Mesh(finsGeometry, material);
+    const fin2 = new THREE.Mesh(finsGeometry, material);
+
+    nose.position.y = 3;
+    body.position.y = 0;
+    fin1.position.set(1.2, -2, 0);
+    fin2.position.set(-1.2, -2, 0);
+    fin2.rotation.z = Math.PI;
+
+    scene.add(nose);
+    scene.add(body);
+    scene.add(fin1);
+    scene.add(fin2);
+
+    camera.position.z = 5;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(nose.position, {
+      y: 5,
+      scrollTrigger: {
+        trigger: '.rocket-component[data-component="nose"]',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: true,
+      },
+    });
+
+    gsap.to(body.position, {
+      y: 2,
+      scrollTrigger: {
+        trigger: '.rocket-component[data-component="body"]',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: true,
+      },
+    });
+
+    gsap.to(fin1.position, {
+      x: 2.5,
+      scrollTrigger: {
+        trigger: '.rocket-component[data-component="fins"]',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: true,
+      },
+    });
+
+    gsap.to(fin2.position, {
+      x: -2.5,
+      scrollTrigger: {
+        trigger: '.rocket-component[data-component="fins"]',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: true,
+      },
+    });
   </script>
 </body>
 </html>
