@@ -7,19 +7,94 @@
   <meta name="description" content="APEX at ASU: Innovating turbopumps and rocketry at Arizona State University.">
   <title>{{ page.title }} | APEX at ASU</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <!-- Add model-viewer script -->
+  <!-- Add Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <!-- Add model-viewer script (already present) -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <!-- Custom CSS for Hero Section -->
+  <style>
+    /* Navigation Bar Styling */
+    .main-header {
+      background-color: #1a1a1a; /* Dark background like Rocket Lab */
+      padding: 15px;
+      position: fixed; /* Fix the navbar at the top */
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .main-header ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+    .main-header ul li {
+      margin: 0 20px;
+    }
+    .main-header ul li a {
+      text-decoration: none;
+      color: #ffffff; /* White text */
+      font-family: 'Arial', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    .main-header ul li a:hover {
+      color: #cccccc;
+    }
+
+    /* Hero Section Styling */
+    .hero-section {
+      position: relative;
+      height: 100vh; /* Full viewport height */
+      overflow: hidden;
+    }
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure GIFs cover the slide */
+    }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif; /* Modern sans-serif font */
+      font-size: 4rem; /* Large text like Rocket Lab */
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.2;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Shadow for contrast */
+    }
+    @media (max-width: 768px) {
+      .hero-text {
+        font-size: 2rem; /* Smaller text on mobile */
+      }
+    }
+
+    /* Main Content Adjustment */
+    .main-content {
+      margin-top: 60px; /* Add margin to account for fixed navbar */
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav class="main-header" style="background-color: #f0f0f0; padding: 10px;">
-    <ul style="list-style: none; display: flex; justify-content: space-around; margin: 0; padding: 0;">
-      <li><a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #159957;">Home</a></li>
-      <li><a href="{{ '/about' | relative_url }}" style="text-decoration: none; color: #159957;">About</a></li>
-      <li><a href="{{ '/projects' | relative_url }}" style="text-decoration: none; color: #159957;">Projects</a></li>
-      <li><a href="{{ '/roster' | relative_url }}" style="text-decoration: none; color: #159957;">Roster</a></li>
-      <li><a href="{{ '/news' | relative_url }}" style="text-decoration: none; color: #159957;">News</a></li>
-      <li><a href="{{ '/contact' | relative_url }}" style="text-decoration: none; color: #159957;">Contact</a></li>
+  <nav class="main-header">
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/about' | relative_url }}">About</a></li>
+      <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
+      <li><a href="{{ '/roster' | relative_url }}">Roster</a></li>
+      <li><a href="{{ '/news' | relative_url }}">News</a></li>
+      <li><a href="{{ '/contact' | relative_url }}">Contact</a></li>
     </ul>
   </nav>
 
@@ -35,5 +110,22 @@
       <span class="site-footer-owner">APEX at ASU © {{ 'now' | date: '%Y' }}. All rights reserved.</span>
     </footer>
   </section>
+
+  <!-- Add Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- Initialize Swiper -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const swiper = new Swiper('.swiper-container', {
+        loop: true, // Loop through slides
+        autoplay: {
+          delay: 5000, // 5 seconds per slide
+          disableOnInteraction: false,
+        },
+        effect: 'fade', // Fade transition like Rocket Lab
+        speed: 1000, // Smooth transition
+      });
+    });
+  </script>
 </body>
 </html>
