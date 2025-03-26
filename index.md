@@ -19,6 +19,7 @@ We build all kinds of turbomachinery projects—from turbopumps to turbojet engi
 
 ## News
 Stay up to date with our latest developments.  
+- **03/2025 – Fabrication Kickoff**: Started machining our first turbopump prototype in the ASU workshop. [See Details](/news/2025-03-fabrication-kickoff)  
 - **02/2025 – ANSYS Workshop with SDR Leadership**: We met with SDR leadership to cover how we can utilize ANSYS to aid pump design. [See Details](/news/2025-02-ansys-workshop)  
 - **01/2025 – Turbopump Design Started**: Our team began development of the CAD design for our kerosene/LOX turbopump. [See Details](/news/2025-01-turbopump-design-started)  
 [View All News](/news)
