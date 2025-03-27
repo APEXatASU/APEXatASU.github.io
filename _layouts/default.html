@@ -379,17 +379,19 @@
 
     /* Team Grid Styling for Roster Page */
     .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 20px;
       padding: 20px;
+      justify-content: center;
     }
 
     .team-member {
       position: relative;
+      width: 200px; /* Fixed width to match Waterloo's layout */
+      height: 200px; /* Fixed height for square aspect ratio */
       overflow: hidden;
       border-radius: 8px;
-      aspect-ratio: 1 / 1; /* Ensure square aspect ratio */
     }
 
     .team-member img {
@@ -410,7 +412,7 @@
       transition: opacity 0.3s ease;
       display: flex;
       align-items: flex-end;
-      padding: 20px;
+      padding: 10px;
     }
 
     .team-member:hover .overlay {
@@ -425,14 +427,14 @@
 
     .member-info h3 {
       margin: 0;
-      font-size: 1.2rem;
+      font-size: 1rem; /* Smaller font to fit */
       font-weight: 700;
       text-transform: uppercase;
     }
 
     .member-info p {
-      margin: 5px 0 0;
-      font-size: 0.9rem;
+      margin: 3px 0 0;
+      font-size: 0.8rem; /* Smaller font to fit */
       line-height: 1.2;
     }
 
@@ -578,6 +580,7 @@
   <!-- ScrollReveal Initialization -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      console.log('ScrollReveal script running on path:', window.location.pathname);
       // Initialize ScrollReveal
       const sr = ScrollReveal({
         origin: 'top', // Start from the top
@@ -588,10 +591,12 @@
       });
 
       // Apply ScrollReveal to elements on the roster page
-      if (window.location.pathname === '/roster' || window.location.pathname === '/roster.html') {
+      if (window.location.pathname === '/roster/' || window.location.pathname === '/roster.html') {
+        console.log('Applying ScrollReveal to roster page');
         sr.reveal('.main-content h1', { interval: 200 }); // Page title
         sr.reveal('.main-content p', { interval: 200 }); // Description
         sr.reveal('.main-content .team-member.reveal', { interval: 200 }); // Team members
+        sr.reveal('.main-content h2', { interval: 200 }); // Join the Team heading
         sr.reveal('.main-content .site-footer', { interval: 200 }); // Footer
       }
     });
