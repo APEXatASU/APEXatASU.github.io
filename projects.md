@@ -24,7 +24,7 @@ We design and build turbomachinery projects, including turbopumps and turbojet e
   <div class="project-content">
     <h3>Turbojet Engine Prototype</h3>
     <p>A small-scale engine for educational purposes.</p>
-    <a href="/projects/turbojet-engine-prototype" class="learn-more-btn">Learn More</a>
+    <a href="/turbojet" class="learn-more-btn">Learn More</a>
   </div>
 </div>
 
