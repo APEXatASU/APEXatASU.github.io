@@ -7,10 +7,16 @@
   <meta name="description" content="APEX at ASU: Innovating turbopumps and rocketry at Arizona State University.">
   <title>{{ page.title }} | APEX at ASU</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <!-- Add model-viewer script (keeping this in case you want to use it later) -->
+  <!-- Add model-viewer script -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <!-- Custom CSS -->
   <style>
+    /* Dark Mode Background */
+    body {
+      background-color: #18191A;
+      color: #ffffff; /* Ensure text is readable on the dark background */
+    }
+
     /* Navigation Bar Styling */
     .main-header {
       background-color: #1a1a1a;
@@ -153,6 +159,34 @@
     /* Main Content Adjustment */
     .main-content {
       margin-top: 60px;
+    }
+
+    /* Style sections for better contrast */
+    section {
+      background: #252526; /* Slightly lighter gray for sections */
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    /* Update links for visibility */
+    a {
+      color: #1e90ff; /* Dodger blue for links */
+    }
+    a:hover {
+      color: #63b3ed; /* Lighter blue on hover */
+    }
+
+    /* Footer Styling */
+    .site-footer {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid #333;
+    }
+    .site-footer-owner {
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
     }
   </style>
 </head>
