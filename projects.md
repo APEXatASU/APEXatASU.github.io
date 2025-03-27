@@ -15,7 +15,7 @@ We design and build turbomachinery projects, including turbopumps and turbojet e
   <div class="project-content">
     <h3>Kerosene/LOX Turbopump</h3>
     <p>A high-performance pump for liquid rocket engines.</p>
-    <a href="/projects/kerosene-lox-turbopump" class="learn-more-btn">Learn More</a>
+    <a href="/turbopump" class="learn-more-btn">Learn More</a>
   </div>
 </div>
 
