@@ -196,14 +196,54 @@
 
     /* Footer Styling */
     .site-footer {
-      text-align: center;
-      padding: 20px 0;
+      background: #1a1a1a; /* Dark background to match the theme */
+      padding: 20px;
       border-top: 1px solid #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
     }
     .site-footer-owner {
       color: #ffffff;
       font-family: 'Arial', sans-serif;
       font-size: 14px;
+      flex: 1;
+    }
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      flex: 1;
+      justify-content: center;
+    }
+    .social-icons a {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .social-icons a:hover {
+      transform: scale(1.1); /* Slight zoom on hover */
+    }
+    .social-icons img {
+      width: 24px;
+      height: 24px;
+    }
+    .asu-logo {
+      flex: 1;
+      text-align: right;
+    }
+    .asu-logo img {
+      width: 100px; /* Adjust size as needed */
+      height: auto;
+    }
+    @media (max-width: 768px) {
+      .site-footer {
+        flex-direction: column;
+        text-align: center;
+      }
+      .asu-logo {
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -225,6 +265,26 @@
     {{ content }}
     <footer class="site-footer">
       <span class="site-footer-owner">APEX at ASU © {{ 'now' | date: '%Y' }}. All rights reserved.</span>
+      <div class="social-icons">
+        <a href="https://discord.gg/your-discord-invite" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.simpleicons.org/discord/FFFFFF" alt="Discord">
+        </a>
+        <a href="https://instagram.com/your-instagram-handle" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.simpleicons.org/instagram/FFFFFF" alt="Instagram">
+        </a>
+        <a href="https://linkedin.com/company/your-linkedin-page" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.simpleicons.org/linkedin/FFFFFF" alt="LinkedIn">
+        </a>
+        <a href="https://youtube.com/channel/your-youtube-channel" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.simpleicons.org/youtube/FFFFFF" alt="YouTube">
+        </a>
+        <a href="https://github.com/APEXatASU" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub">
+        </a>
+      </div>
+      <div class="asu-logo">
+        <img src="/assets/images/asu-logo.png" alt="ASU Logo">
+      </div>
     </footer>
   </section>
 
