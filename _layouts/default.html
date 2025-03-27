@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <!-- Add model-viewer script -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <!-- Add Swup for page transitions -->
+  <script src="https://unpkg.com/swup@4/dist/swup.min.js"></script>
   <!-- Custom CSS -->
   <style>
     /* Dark Mode Background */
@@ -245,6 +247,17 @@
         text-align: center;
       }
     }
+
+    /* Page Transition Styles */
+    .main-content {
+      transition: opacity 0.5s ease; /* Fade transition for the main content */
+    }
+    .swup-transition-fade {
+      opacity: 1;
+    }
+    .swup-transition-fade.is-changing {
+      opacity: 0;
+    }
   </style>
 </head>
 <body>
@@ -261,7 +274,7 @@
   </nav>
 
   <!-- Main Content -->
-  <section class="main-content">
+  <section class="main-content" id="swup">
     {{ content }}
     <footer class="site-footer">
       <span class="site-footer-owner">APEX at ASU © {{ 'now' | date: '%Y' }}. All rights reserved.</span>
@@ -345,6 +358,16 @@
 
       // Initial slide
       showSlide(currentSlide);
+    });
+  </script>
+
+  <!-- Initialize Swup for Page Transitions -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const swup = new Swup({
+        containers: ['#swup'], // Transition the main-content section
+        animationSelector: '.swup-transition-fade' // Use the fade transition
+      });
     });
   </script>
 </body>
