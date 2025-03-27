@@ -9,8 +9,6 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <!-- Add model-viewer script -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <!-- Add Swup for page transitions -->
-  <script src="https://unpkg.com/swup@4/dist/swup.min.js"></script>
   <!-- Custom CSS -->
   <style>
     /* Dark Mode Background */
@@ -178,6 +176,9 @@
     /* Main Content Adjustment */
     .main-content {
       margin-top: 60px;
+      position: relative;
+      min-height: 100vh; /* Ensure the content takes up the full viewport height */
+      overflow: hidden;
     }
 
     /* Style sections for better contrast */
@@ -250,13 +251,32 @@
 
     /* Page Transition Styles */
     .main-content {
-      transition: opacity 0.5s ease; /* Fade transition for the main content */
+      animation: slideIn 0.45s cubic-bezier(0, 0, 0.21, 1) forwards;
     }
-    .swup-transition-fade {
-      opacity: 1;
+    .main-content.slide-out {
+      animation: slideOut 0.45s cubic-bezier(0, 0, 0.21, 1) forwards;
     }
-    .swup-transition-fade.is-changing {
-      opacity: 0;
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOut {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -264,17 +284,17 @@
   <!-- Navigation Bar -->
   <nav class="main-header">
     <ul>
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/about' | relative_url }}">About</a></li>
-      <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
-      <li><a href="{{ '/roster' | relative_url }}">Roster</a></li>
-      <li><a href="{{ '/news' | relative_url }}">News</a></li>
-      <li><a href="{{ '/contact' | relative_url }}">Contact</a></li>
+      <li><a href="{{ '/' | relative_url }}" class="nav-link">Home</a></li>
+      <li><a href="{{ '/about' | relative_url }}" class="nav-link">About</a></li>
+      <li><a href="{{ '/projects' | relative_url }}" class="nav-link">Projects</a></li>
+      <li><a href="{{ '/roster' | relative_url }}" class="nav-link">Roster</a></li>
+      <li><a href="{{ '/news' | relative_url }}" class="nav-link">News</a></li>
+      <li><a href="{{ '/contact' | relative_url }}" class="nav-link">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Main Content -->
-  <section class="main-content" id="swup">
+  <section class="main-content">
     {{ content }}
     <footer class="site-footer">
       <span class="site-footer-owner">APEX at ASU © {{ 'now' | date: '%Y' }}. All rights reserved.</span>
@@ -361,12 +381,26 @@
     });
   </script>
 
-  <!-- Initialize Swup for Page Transitions -->
+  <!-- Page Transition Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const swup = new Swup({
-        containers: ['#swup'], // Transition the main-content section
-        animationSelector: '.swup-transition-fade' // Use the fade transition
+      // Select all navigation links
+      const navLinks = document.querySelectorAll('.nav-link, a[href^="/"]:not([href*="://"])');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent default navigation
+          const href = link.getAttribute('href');
+
+          // Apply slide-out animation
+          const mainContent = document.querySelector('.main-content');
+          mainContent.classList.add('slide-out');
+
+          // Navigate to the new page after the animation completes
+          setTimeout(() => {
+            window.location.href = href;
+          }, 450); // Match the animation duration (0.45s)
+        });
       });
     });
   </script>
